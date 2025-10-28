@@ -19,13 +19,13 @@ export default function CheckoutForm({ total, clearCart }) {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/api/order/createCheckout", orderData, {
+      const res = await axios.post("https://ecommerce-backend-lxq0.onrender.com/api/order/createCheckout", orderData, {
         headers: { "Content-Type": "application/json" }
       });
       
       if(res.data.status === 'success'){
        setIsLoading(true)
-       
+
         setTimeout(() => {
           navigate("/order-status"); 
           setIsLoading(false)

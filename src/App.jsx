@@ -55,7 +55,7 @@ export default function App() {
   useEffect(() => {
     const getAllOrders = async () => {
       try{
-        const result = await axios.get('http://localhost:5000/api/order/orders')
+        const result = await axios.get('https://ecommerce-backend-lxq0.onrender.com/api/order/orders')
         console.log(result)
         setOrders(result.data)
       } catch(error){
