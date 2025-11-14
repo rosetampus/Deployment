@@ -8,11 +8,11 @@ const ProductCard = ({ name, price, description, image, onAddToCart }) => {
       <div className="p-4">
         <h2 className="text-lg font-semibold text-gray-800">{name}</h2>
         <p className="text-gray-600 text-sm mt-1">{description}</p>
-        <p className="text-blue-600 font-bold text-lg mt-2">${price}</p>
+        <p className="text-gold-500 font-bold text-xl mt-2">${price}</p>
 
         <button
           onClick={onAddToCart}
-          className="mt-3 w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
+          className="mt-3 w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-rose-700 transition-colors duration-300 transform hover:scale-105"
         >
           Add to Cart
         </button>

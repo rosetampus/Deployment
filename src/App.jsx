@@ -6,12 +6,16 @@ import CheckoutForm from "./components/CheckoutForm";
 import OrderStatus from "./components/OrderStatus"; 
 import { products as productData } from "./data/products"; 
 import axios from 'axios'
+import Navbar from "./components/Navbar";
+import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
 
 export default function App() {
   const [cart, setCart] = useState(() => JSON.parse(localStorage.getItem("cart")) || []);
   const cartRef = useRef(null);
   const [orders, setOrders] = useState([]);
+  const shopRef = useRef(null);
 
 
   useEffect(() => {
@@ -65,31 +69,46 @@ export default function App() {
     getAllOrders()
   },[])
 
+  const handleShopScroll = () => {
+    if (shopRef.current) {
+      shopRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Router>
+      <Navbar onShopClick={handleShopScroll} />
       <Routes>
-        <Route path="/" element={
-          <div className="max-w-6xl mx-auto p-6">
-            <header className="flex justify-between items-center mb-6 border-b pb-4">
-              <h1 className="text-3xl font-bold text-blue-600">My E-Commerce Store</h1>
-              <div>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
-                  Cart ({cart.reduce((sum, item) => sum + (item.qty || 0), 0)})
-                </button>
+        <Route
+          path="/"
+          element={
+            <div className="max-w-6xl mx-auto p-6">
+              <header className="flex justify-between items-center mb-6 border-b pb-4 bg-white p-4 rounded-lg shadow-md">
+                <h1 className="text-3xl font-bold text-pink-700">My E-Commerce Store</h1>
+                <div>
+                  <button className="bg-gold-500 text-white px-4 py-2 rounded-md hover:bg-gold-600 transition">
+                    Cart ({cart.reduce((sum, item) => sum + (item.qty || 0), 0)})
+                  </button>
+                </div>
+              </header>
+
+              <div ref={shopRef} id="products" className="py-8">
+                <h2 className="text-4xl font-extrabold text-center text-pink-700 mb-8">Our Products</h2>
+                <ProductList addToCart={addToCart} />
               </div>
-            </header>
 
-            <ProductList addToCart={addToCart} />
+              <div className="my-10" />
 
-            <div className="my-10" />
+              <Cart ref={cartRef} cart={cart} updateQty={updateQty} removeFromCart={removeFromCart} total={total} />
 
-            <Cart ref={cartRef} cart={cart} updateQty={updateQty} removeFromCart={removeFromCart} total={total} />
-
-            {cart.length > 0 && <CheckoutForm total={total} clearCart={clearCart} />}
-          </div>
-        } />
+              {cart.length > 0 && <CheckoutForm total={total} clearCart={clearCart} />}
+            </div>
+          }
+        />
 
         <Route path="/order-status" element={<OrderStatus />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
