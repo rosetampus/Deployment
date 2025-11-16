@@ -21,7 +21,7 @@ const Contact = () => {
 
           <div className="p-6 bg-pink-50 shadow-md rounded-lg text-center">
             <h2 className="font-bold text-xl text-gray-800 mb-2">Email</h2>
-            <p className="text-gray-600">support@yourstore.com</p>
+            <p className="text-gray-600">tampusrosevene@gmail.com</p>
           </div>
 
           <div className="p-6 bg-pink-50 shadow-md rounded-lg text-center sm:col-span-2">
