@@ -89,7 +89,7 @@ export default function App() {
           element={
             <div className="max-w-6xl mx-auto p-6">
               <header className="flex justify-between items-center mb-6 border-b pb-4 bg-white p-4 rounded-lg shadow-md">
-                <h1 className="text-3xl font-bold text-pink-700">My E-Commerce Store</h1>
+                <h1 className="text-3xl font-semibold text-pink-700">Where flowers meet feelings</h1>
                 <div>
                   <button className="bg-gold-500 text-white px-4 py-2 rounded-md hover:bg-gold-600 transition">
                     Cart ({cart.reduce((sum, item) => sum + (item.qty || 0), 0)})

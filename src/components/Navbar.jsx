@@ -19,7 +19,7 @@ const Navbar = ({ onShopClick }) => {
     <nav className="bg-gradient-to-r from-pink-500 to-rose-500 p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-3xl font-bold tracking-wide hover:text-gold-200 transition duration-300 ease-in-out transform hover:scale-105">
-          E-Commerce
+          Rosevene's Store
         </Link>
         <ul className="flex space-x-6">
           <li>
