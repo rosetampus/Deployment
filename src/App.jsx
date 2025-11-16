@@ -60,10 +60,15 @@ export default function App() {
     const getAllOrders = async () => {
       try{
         const result = await axios.get('https://ecommerce-backend-lxq0.onrender.com/api/order/orders')
-        console.log(result)
+        console.log("Fetched orders:", result)
         setOrders(result.data)
       } catch(error){
-        console.error(error)
+        if (error.response && error.response.status === 401) {
+          console.warn("Authentication required to fetch orders (401 Unauthorized). Orders not loaded.");
+          setOrders([]); // Clear orders if unauthorized
+        } else {
+          console.error("Error fetching orders:", error)
+        }
       }
     }
     getAllOrders()
